@@ -1,130 +1,86 @@
-# assignment1-recursion
+# assignment2- Physical & Logical Data
+Structures (Banking System)
 Nazerke Bozgulan, SE-2514
 
-Part 1:
-Task 1. Print Digits of a Number
-Write a recursive function that takes an integer as input and
-prints every digit of the given number on a separate line.
-Example:
-Input: 5481
-Output:
-5
-4
-8
-1
-![img.png](img.png) ![img_1.png](img_1.png) ![img_2.png](img_2.png)
+Task 1. Bank Account Storage Using LinkedList
+Create a class BankAccount containing:
+• accountNumber
+• username
+• balance
+Create a LinkedList to store accounts.
+Program must allow user to:
+• Add a new account
+• Display all accounts
+• Search account by username
+Example Output:
+Account added successfully
+Accounts List:
+1. Ali – Balance: 150000
+2. Sara – Balance: 220000 ![img_32.png](img_32.png) ![img_33.png](img_33.png) ![img_34.png](img_34.png)
+   Task 2 – Deposit & Withdraw Operations
+   Extend Task 1 program to allow:
+   • Deposit money
+   • Withdraw money
+   • Update balance inside LinkedList
+   Example Output:
+   Enter username: Ali
+   Deposit: 50000
+   New balance: 200000 ![img_35.png](img_35.png) ![img_36.png](img_36.png)
+   Task 3 – Transaction History (Stack – LIFO)
+   Create a Stack<String> transaction History
+   Store actions:
+   • Deposit  
+   • Withdraw  
+   • Bill payment  
+   Program must allow:
+   • Add transaction to stack  
+   • Undo last transaction (pop)  
+   • Display last transaction (peek)
+   Example Output:
+   Deposit 50000 to Ali
+   Withdraw 20000 from Ali
+   Last transaction: Withdraw 20000
+   from Ali
+   Undo → Withdraw removed ![img_37.png](img_37.png) ![img_38.png](img_38.png)
+   Task 4 – Bill Payment Queue (Queue – FIFO)
+   Create a Queue billQueue using LinkedList.
+   Allow user to:
+   • Add bill payment request
+   • Process next bill payment
+   • Display queue
+   Example Output:
+   Added: Electricity Bill
+   Added: Internet Bill
+   Processing: Electricity Bill
+   Remaining: Internet Bill ![img_41.png](img_41.png) ![img_42.png](img_42.png)![img_43.png](img_43.png)![img_44.png](img_44.png)
+   Task 5 – Account Opening Queue (Admin Simulation)
+   Create Queue accountRequests.
+   User submits request → Admin processes queue.
+   Program must:
+   • Add account request to queue
+   • Process request (move to main LinkedList)
+   • Display pending requests
+   This simulates real banking workflow. ![img_39.png](img_39.png)![img_40.png](img_40.png)
+   Task 6. Create program that:
+   • Creates array BankAccount[3]  
+   • Stores 3 predefined accounts  
+   • Prints them ![img_32.png](img_32.png) ![img_33.png](img_33.png) ![img_34.png](img_34.png)
+   1 – Enter Bank
+   2 – Enter ATM
+   3 – Admin Area
+   4 – Exit
+   Bank Menu
+   User can:
+   • Submit account opening request → goes to queue
+   • Deposit money
+   • Withdraw money
+   Uses:
+   • LinkedList accounts
+   • Stack history
+   ATM Menu
+   • Balance enquiry
+   • Withdraw
+   Admin Menu
+   • View and process account queue
+   • View bill payment queue ![img_45.png](img_45.png) 
 
-Task 2. Average of Elements
-Write a recursive function to calculate the sum of the
-elements, then compute the average using the result.
-Example:
-Input
-4
-3 2 4 1
-Output
-2.5 
-![img_3.png](img_3.png) ![img_4.png](img_4.png) ![img_5.png](img_5.png)
-
-Task 3. Prime Number Check
-Write a recursive function that checks whether a number n is
-prime. A prime number is a number that is divisible only by 1 and
-itself.
-Example:
-Input
-7
-Output
-10
-Prime
-Composite 
-![img_6.png](img_6.png) ![img_7.png](img_7.png) ![img_8.png](img_8.png)
-
-Task 4. Factorial
-Write a recursive function that calculates n! (factorial).
-Example:
-Input
-5
-Output
-120 
-![img_9.png](img_9.png) ![img_10.png](img_10.png) ![img_11.png](img_11.png)
-
-Part 2: Task 5. Fibonacci Number
-Write a recursive function to find the n-th Fibonacci number.
-Formula:
-
-
-Base cases:
-�
-�𝑛	=	𝐹𝑛−1	+	𝐹𝑛−2
-
-
-�
-�0	=	0,	𝐹1	=	1
-
-Example:
-
-Input Output
-5 5
-17 1597
-![img_12.png](img_12.png) ![img_13.png](img_13.png)![img_14.png](img_14.png)
-
-Task 6. Power Function
-
-You are given numbers a and n. Write a recursive function that
-returns:
-�
-�𝑛
-
-Example
-Input Output
-2 10 1024
-![img_15.png](img_15.png)![img_16.png](img_16.png) ![img_17.png](img_17.png)
-
-Task 7. Reverse Output
-
-You are given n numbers. Write a recursive function that reads
-and prints the numbers in reverse order without using another
-array.
-
-Example
-Input Output
-4
-1 4 6 2
-2 6 4 1
-![img_18.png](img_18.png) ![img_19.png](img_19.png) ![img_20.png](img_20.png)
-
-Part 3: Task 8. Check Digits in String
-
-You are given a string s. Write a recursive function that
-checks whether the string contains only digits. Return "Yes" if
-all characters are digits, otherwise return "No".
-
-Example:
-Input Output
-123456 Yes
-123a12 No
-![img_21.png](img_21.png)![img_22.png](img_22.png) ![img_23.png](img_23.png)
-
-
-Task 9. Count Characters in a String
-
-Write a recursive function that counts the number of characters in a
-given string. The function should return the total number of characters
-in the string.
-
-Example:
-Input Output
-hello 5
-recursion 9
-![img_24.png](img_24.png) ![img_26.png](img_26.png) ![img_27.png](img_27.png)
-
-
-Task 10. Greatest Common Divisor (GCD)
-
-Write a recursive function that finds the GCD of two numbers
-using the Euclidean Algorithm.
-
-Example:
-Input Output
-32 48 16
-10 7 1 
-![img_28.png](img_28.png) ![img_29.png](img_29.png)![img_30.png](img_30.png)
