@@ -6,7 +6,6 @@ public class Edge {
         this.source = source;
         this.destination = destination;
     }
-
     public int getSource() { return source; }
     public int getDestination() { return destination; }
 
