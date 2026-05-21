@@ -12,7 +12,6 @@ public class Experiment {
         end = System.nanoTime();
         System.out.println("DFS Time: " + (end - start) + " ns");
     }
-
     public void runMultipleTests() {
     }
 }

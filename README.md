@@ -1,139 +1,30 @@
-# README — Dijkstra’s Algorithm (Shortest Path)
+# Graph Traversal and Shortest Path Laboratory Work
 
-## Project Description
+This repository contains the implementation of a graph structure supporting multiple traversal algorithms (BFS, DFS) along with an implementation of Dijkstra's Algorithm for finding the shortest path in a weighted graph.
 
-This project demonstrates the implementation of Dijkstra’s Algorithm in Java using a weighted directed graph with an adjacency list. The algorithm calculates the shortest distance from a starting vertex to all other vertices in the graph.
----
+## Bonus Task: Dijkstra’s Algorithm Implementation
 
-## Features
-* Weighted graph implementation
-* Edge class with weight support
-* Adjacency list representation
-* Dijkstra’s shortest path algorithm
-* Outputs shortest distances from the chosen start vertex
+As part of the bonus task requirements, the project was extended to support weighted directed graphs, allowing the computation of the shortest distance from a single source vertex to all other reachable vertices.
 
----
-
-## Project Structure
-
-### `Edge.java`
-
-Represents a weighted edge in the graph.
-
-Fields:
-
-* `to` — destination vertex
-* `weight` — edge weight
-
-Methods:
-
-* `getTo()`
-* `getWeight()`
+### Key Modifications & Requirements Met:
+1. **Weighted Edges:** The `Edge` class was modified to include a `weight` field (`int weight`) alongside `source` and `destination`.
+2. **Graph Structure Update:** The adjacency list (`Map<Integer, List<Edge>>` in the `Graph` class) successfully stores instances of these weighted edges.
+3. **Dijkstra's Method:** Implemented the `public void dijkstra(int start)` method using arrays for distance tracking (`dist[]`) and visited flags (`visited[]`). It correctly employs simple nested loops for vertex selection without requiring a priority queue, as permitted by the instructions.
+4. **Graph Generation:** Updated the `createRandomGraph` method in `Main.java` to assign random edge weights ranging from 1 to 10.
 
 ---
 
-### `Graph.java`
+## Code Overview
 
-Represents the graph using an adjacency list.
+### 1. Core Classes
+* **Vertex:** Represents a node within the graph, uniquely identified by an integer `id`.
+* **Edge:** Connects two vertices with a specific directional flow and a defined integer `weight`.
+* **Graph:** Manages the structural adjacency list and contains implementation logic for traversals and shortest path computations.
+* **Experiment:** A benchmarking utility used to measure and output execution performance times for BFS and DFS in nanoseconds.
 
-Methods:
+### 2. Supported Algorithms
+* **Breadth-First Search (BFS):** Explores vertices level-by-level using a standard `Queue` implementation.
+* **Depth-First Search (DFS):** Traverses deeper into the graph paths using a recursive approach helper method.
+* **Dijkstra's Algorithm:** Calculates the shortest pathways. If a vertex cannot be reached from the specified starting position, the system marks its final distance value as `INF`.
 
-* `addEdge(int from, int to, int weight)`
-* `dijkstra(int start)`
-
-The `dijkstra()` method:
-
-1. Initializes distance and visited arrays
-2. Finds the nearest unvisited vertex
-3. Updates distances to neighboring vertices
-4. Prints the shortest distances
-
----
-
-### `DijkstraDemo.java`
-
-Contains the `main()` method to test the algorithm.
-
-Creates a graph with 5 vertices and weighted edges, then runs:
-
-```java
-g.dijkstra(0);
-```
-
-This calculates the shortest paths starting from vertex `0`.
-
----
-
-## Example Graph
-
-Edges used in the demo:
-
-```text
-0 → 1 (10)
-0 → 2 (3)
-1 → 2 (1)
-1 → 3 (2)
-2 → 1 (4)
-2 → 3 (8)
-2 → 4 (2)
-3 → 4 (7)
-4 → 3 (9)
-```
-
----
-
-## Example Output
-
-```text
-Shortest distances from vertex 0:
-to 0 = 0
-to 1 = 7
-to 2 = 3
-to 3 = 9
-to 4 = 5
-```
-
----
-
-## Algorithm Used
-
-### Dijkstra’s Algorithm
-
-Dijkstra’s Algorithm finds the shortest path from one vertex to all other vertices in a graph with non-negative edge weights.
-
-### Time Complexity
-
-Without a priority queue:
-
-```text
-O(V²)
-```
-
-Where:
-
-* `V` = number of vertices
-
----
-
-## Requirements
-
-* Java 8 or higher
-
----
-
-## How to Run
-
-### Compile
-
-```bash
-javac *.java
-```
-
-### Run
-
-```bash
-java DijkstraDemo
-```
-
-
-
+![img.png](img.png) ![img_1.png](img_1.png) ![img_2.png](img_2.png) ![img_3.png](img_3.png)![img_4.png](img_4.png) ![img_5.png](img_5.png)
