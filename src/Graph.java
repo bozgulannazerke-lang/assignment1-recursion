@@ -1,62 +1,53 @@
 import java.util.*;
 
 public class Graph {
-    private Map<Integer, List<Integer>> adjList;
-    public Graph() {
-        this.adjList = new HashMap<>();
+    private final List<Edge>[] adj;
+
+    @SuppressWarnings("unchecked")
+    public Graph(int n) {
+        adj = new ArrayList[n];
+        for (int i = 0; i < n; i++) {
+            adj[i] = new ArrayList<>();
+        }
     }
 
-    public void addVertex(Vertex v) {
-        adjList.putIfAbsent(v.getId(), new ArrayList<>());
+    public void addEdge(int from, int to, int weight) {
+        adj[from].add(new Edge(to, weight));
     }
 
-    public void addEdge(int from, int to) {
-        adjList.get(from).add(to);
-    }
+    public void dijkstra(int start) {
+        int n = adj.length;
+        int[] dist = new int[n];
+        boolean[] visited = new boolean[n];
 
-    public void bfs(int start) {
-        Set<Integer> visited = new HashSet<>();
-        Queue<Integer> queue = new LinkedList<>();
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[start] = 0;
 
-        visited.add(start);
-        queue.add(start);
+        for (int i = 0; i < n; i++) {
+            int u = -1;
+            for (int j = 0; j < n; j++) {
+                if (!visited[j] && (u == -1 || dist[j] < dist[u])) {
+                    u = j;
+                }
+            }
 
-        System.out.print("BFS Traversal: ");
-        while (!queue.isEmpty()) {
-            int current = queue.poll();
-            System.out.print(current + " ");
+            if (dist[u] == Integer.MAX_VALUE) break;
+            visited[u] = true;
 
-            for (int neighbor : adjList.getOrDefault(current, new ArrayList<>())) {
-                if (!visited.contains(neighbor)) {
-                    visited.add(neighbor);
-                    queue.add(neighbor);
+            for (Edge e : adj[u]) {
+                if (dist[u] + e.getWeight() < dist[e.getTo()]) {
+                    dist[e.getTo()] = dist[u] + e.getWeight();
                 }
             }
         }
-        System.out.println();
-    }
 
-    public void dfs(int start) {
-        Set<Integer> visited = new HashSet<>();
-        System.out.print("DFS Traversal: ");
-        dfsHelper(start, visited);
-        System.out.println();
-    }
-
-    private void dfsHelper(int v, Set<Integer> visited) {
-        visited.add(v);
-        System.out.print(v + " ");
-
-        for (int neighbor : adjList.getOrDefault(v, new ArrayList<>())) {
-            if (!visited.contains(neighbor)) {
-                dfsHelper(neighbor, visited);
+        System.out.println("Shortest distances from vertex " + start + ":");
+        for (int i = 0; i < n; i++) {
+            if (dist[i] == Integer.MAX_VALUE) {
+                System.out.println("to " + i + " = INF");
+            } else {
+                System.out.println("to " + i + " = " + dist[i]);
             }
-        }
-    }
-
-    public void printGraph() {
-        for (int v : adjList.keySet()) {
-            System.out.println(v + ": " + adjList.get(v));
         }
     }
 }

@@ -1,16 +1,17 @@
 public class Edge {
-    private int source;
-    private int destination;
+    private final int to;
+    private final int weight;
 
-    public Edge(int source, int destination) {
-        this.source = source;
-        this.destination = destination;
+    public Edge(int to, int weight) {
+        this.to = to;
+        this.weight = weight;
     }
-    public int getSource() { return source; }
-    public int getDestination() { return destination; }
 
-    @Override
-    public String toString() {
-        return source + " -> " + destination;
+    public int getTo() {
+        return to;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 }
